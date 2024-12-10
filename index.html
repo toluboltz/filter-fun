@@ -7,17 +7,17 @@
 </head>
 <body>
 <h1>Filter Fun</h1>
-<canvas id="imgCanvas">
+<canvas id="canvas">
 </canvas>
 <h1>Load Image</h1>
-<input type="file" accept="image/*" id="imgfile">
+<input type="file" accept="image/*" id="imgfile" onchange="loadImage()">
 <h1>Choose Filter</h1>
 <p>
-    <input type="button" value="Grayscale">
-    <input type="button" value="Red">
-    <input type="button" value="Blur">
+    <input type="button" value="Grayscale" onclick="doGray()">
+    <input type="button" value="Red" onclick="doRed()">
+    <input type="button" value="Blur" onclick="doBlur()">
 </p>
-<input type="button" value="Reset Image">
+<input type="button" value="Reset Image" onclick="doReset()">
 <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
 <script src="script.js"></script>
 </body>
