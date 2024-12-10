@@ -27,6 +27,7 @@ function imageIsLoaded(image) {
 }
 
 function filterGray() {
+    // set the RGB values to the average of the 3 values
     for (var pixel of grayImage.values()) {
         var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
         pixel.setRed(avg);
@@ -43,8 +44,28 @@ function doGray() {
     }
 }
 
+function filterRed() {
+    for (var pixel of redImage.values()) {
+        var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+        if (avg < 128) {
+            pixel.setRed(2 * avg);
+            pixel.setGreen(0);
+            pixel.setBlue(0);
+        }
+        else {
+            pixel.setRed(255);
+            pixel.setGreen((2 * avg) - 255);
+            pixel.setBlue((2 * avg) - 255);
+        }
+    }
+}
+
 function doRed() {
-    alert("do red");
+    // check if image is loaded
+    if (imageIsLoaded(redImage)) {
+        filterRed();
+        redImage.drawTo(canvas);
+    }
 }
 
 function doBlur() {
